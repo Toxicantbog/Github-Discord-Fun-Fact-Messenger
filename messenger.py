@@ -1,8 +1,15 @@
 from PySide6.QtWidgets import QWidget, QPushButton, QHBoxLayout, QVBoxLayout, QApplication, QLabel, QLineEdit
 from PySide6.QtCore import QTimer
-import requests, json, random, sys
+import requests, json, random, sys, os
 
-file_path = 'facts.json'
+#file_path = 'facts.json'
+
+
+
+if hasattr(sys, '_MEIPASS'):
+    file_path = os.path.join(sys._MEIPASS, 'facts.json')
+else:
+    file_path = os.path.join(os.path.dirname(__file__), 'facts.json'
 
 with open(file_path, 'r', encoding='utf-8') as file:
     data = file.read()
